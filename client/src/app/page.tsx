@@ -59,7 +59,7 @@ export default function Dashboard() {
 
   const outputEndRef = useRef<HTMLDivElement>(null);
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3002";
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   useEffect(() => {
     outputEndRef.current?.scrollIntoView({ behavior: "smooth" });

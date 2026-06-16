@@ -15,7 +15,7 @@ export const getEmbedding = async (prompt: string): Promise<number[]> => {
         try {
             return await hfEmbeddings.embedQuery(prompt);
         } catch (error) {
-            console.error('Cloud Embedding SDK Error:', error);
+            console.error('Error generating embedding:', error);
             throw error;
         }
     } else {

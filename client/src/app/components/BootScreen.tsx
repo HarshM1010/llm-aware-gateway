@@ -24,7 +24,7 @@ export function BootScreen({ onBootComplete }: BootScreenProps) {
     }, 3000);
 
     const pollServer = async () => {
-      const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3002";
+      const API_URL = process.env.NEXT_PUBLIC_API_URL;
       let isAwake = false;
       let attempts = 0;
       const maxAttempts = 20;

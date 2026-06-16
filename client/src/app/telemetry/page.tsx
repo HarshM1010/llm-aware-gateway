@@ -41,9 +41,7 @@ export default function TelemetryPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isPending, startTransition] = useTransition();
 
-  const API_URL = process.env.CLIENT_ENV === "production"
-        ? "https://llm-aware-gateway.onrender.com"
-        : "http://localhost:3000";
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   // Defer filter/search values so typing doesn't block rendering
   const deferredFilter = useDeferredValue(filter);

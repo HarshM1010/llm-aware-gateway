@@ -4,13 +4,12 @@ import { useState, useEffect, useMemo, lazy, Suspense, useDeferredValue, useTran
 import {
   BarChart3, Clock, Zap, Activity, RefreshCw, Layers, AlertCircle,
 } from "lucide-react";
-import dotenv from "dotenv";
 import type { TelemetryStats, TelemetryLog } from "./constants";
 import { SOURCE_LABELS, SOURCE_COLORS } from "./constants";
 import { StatCard } from "./components/StatCard";
 import { SourceBreakdown } from "./components/SourceBreakdown";
 import { RequestLogTable } from "./components/RequestLogTable";
-dotenv.config();
+ 
 
 // Lazy-load heavy chart components — they pull in recharts which is large
 const LatencyChart = lazy(() =>

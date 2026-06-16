@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Memoria — Intelligent LLM Gateway",
+  title: "LLM Aware Gateway — Intelligent LLM Gateway",
   description: "Multi-tier caching gateway with semantic search, LLM routing, and observability",
 };
 

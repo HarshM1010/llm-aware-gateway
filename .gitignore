@@ -1,0 +1,48 @@
+# ─── Dependencies ───────────────────────────────────────
+node_modules/
+client/node_modules/
+gateway/node_modules/
+
+# ─── Environment Variables (NEVER commit these) ─────────
+.env
+.env.local
+.env.development
+.env.production
+.env*.local
+gateway/.env
+client/.env
+client/.env.local
+
+# ─── Build Outputs ──────────────────────────────────────
+gateway/dist/
+client/.next/
+client/out/
+client/build/
+
+# ─── TypeScript ─────────────────────────────────────────
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+
+# ─── Logs ───────────────────────────────────────────────
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+logs/
+
+# ─── OS Files ───────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── Editor ─────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ─── Misc ───────────────────────────────────────────────
+.cache/
+coverage/
+*.pem

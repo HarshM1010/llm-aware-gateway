@@ -23,11 +23,11 @@ export function Navbar() {
 
   return (
     <header className="border-b border-zinc-800/50 bg-zinc-900/60 backdrop-blur-xl sticky top-0 z-50">
-      <div className="flex items-center justify-between px-6 py-3 max-w-[1800px] mx-auto">
+      <div className="flex items-center justify-between px-6 py-3 max-w-450 mx-auto">
         <div className="flex items-center gap-8">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 shadow-lg shadow-cyan-500/20 flex items-center justify-center group-hover:shadow-cyan-500/40 transition-shadow">
+            <div className="h-8 w-8 rounded-lg bg-linear-to-br from-cyan-500 to-blue-600 shadow-lg shadow-cyan-500/20 flex items-center justify-center group-hover:shadow-cyan-500/40 transition-shadow">
               <Gauge size={16} className="text-white" />
             </div>
             <h1 className="font-semibold tracking-tight text-lg">

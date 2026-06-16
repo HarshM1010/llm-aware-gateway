@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Hexagon, Cpu, Loader2 } from "lucide-react";
-import dotenv from "dotenv";
-dotenv.config();
 
 const BOOT_MESSAGES = [
   "Initializing LLM Aware Gateway...",
@@ -26,9 +24,7 @@ export function BootScreen({ onBootComplete }: BootScreenProps) {
     }, 3000);
 
     const pollServer = async () => {
-      const API_URL = process.env.CLIENT_ENV === "production"
-        ? "https://llm-aware-gateway.onrender.com"
-        : "http://localhost:3000";
+      const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3002";
       let isAwake = false;
       let attempts = 0;
       const maxAttempts = 20;

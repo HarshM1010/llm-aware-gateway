@@ -19,7 +19,7 @@ interface HourlyVolumeChartProps {
 
 export function HourlyVolumeChart({ data }: HourlyVolumeChartProps) {
   return (
-    <div className="rounded-2xl border border-zinc-800/60 bg-gradient-to-b from-zinc-900/50 to-zinc-950/80 p-5">
+    <div className="rounded-2xl border border-zinc-800/60 bg-linear-to-b from-zinc-900/50 to-zinc-950/80 p-5">
       <div className="flex items-center gap-2 mb-4">
         <BarChart3 size={15} className="text-amber-400" />
         <h3 className="text-[11px] font-bold tracking-widest uppercase text-zinc-200">
@@ -27,7 +27,7 @@ export function HourlyVolumeChart({ data }: HourlyVolumeChartProps) {
         </h3>
         <span className="text-[9px] font-mono text-zinc-600 ml-auto">Last 24 hours</span>
       </div>
-      <div className="h-[200px]">
+      <div className="h-50">
         {data.length > 0 ? (
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={data}>

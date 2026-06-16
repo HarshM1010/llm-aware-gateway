@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useTransition, useState, useEffect } from "react";
+import { useTransition } from "react";
 import { Terminal, BarChart3, Gauge, Loader2 } from "lucide-react";
 
 const navItems = [

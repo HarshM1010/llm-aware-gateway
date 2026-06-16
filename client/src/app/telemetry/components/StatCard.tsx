@@ -19,7 +19,7 @@ export function StatCard({ label, value, icon: Icon, color, suffix }: StatCardPr
   const c = colorMap[color];
 
   return (
-    <div className="rounded-2xl border border-zinc-800/60 bg-gradient-to-b from-zinc-900/50 to-zinc-950/80 p-5 flex items-start gap-4">
+    <div className="rounded-2xl border border-zinc-800/60 bg-linear-to-b from-zinc-900/50 to-zinc-950/80 p-5 flex items-start gap-4">
       <div className={`p-2.5 rounded-xl ${c.bg} ${c.border} border`}>
         <Icon size={18} className={c.text} />
       </div>

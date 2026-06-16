@@ -29,8 +29,9 @@ import { MetricCard } from "./components/MetricCard";
 import { SimilarityGauge } from "./components/SimilarityGauge";
 import { ExecutionTree } from "./components/ExecutionTree";
 import { MarkdownRenderer } from "./components/MarkdownRenderer";
-
+import dotenv from "dotenv";
 import { BootScreen } from "./components/BootScreen";
+dotenv.config();
 
 let hasAppBooted = false;
 
@@ -60,6 +61,10 @@ export default function Dashboard() {
 
   const outputEndRef = useRef<HTMLDivElement>(null);
 
+  const API_URL = process.env.CLIENT_ENV === "production"
+        ? "https://llm-aware-gateway.onrender.com"
+        : "http://localhost:3000";
+
   useEffect(() => {
     outputEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [output]);
@@ -84,7 +89,7 @@ export default function Dashboard() {
 
     try {
       const res = await fetch(
-        "http://localhost:3000/api/generate",
+        `${API_URL}/api/generate`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

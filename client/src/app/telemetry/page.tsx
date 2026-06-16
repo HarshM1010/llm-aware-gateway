@@ -4,12 +4,13 @@ import { useState, useEffect, useMemo, lazy, Suspense, useDeferredValue, useTran
 import {
   BarChart3, Clock, Zap, Activity, RefreshCw, Layers, AlertCircle,
 } from "lucide-react";
-
+import dotenv from "dotenv";
 import type { TelemetryStats, TelemetryLog } from "./constants";
 import { SOURCE_LABELS, SOURCE_COLORS } from "./constants";
 import { StatCard } from "./components/StatCard";
 import { SourceBreakdown } from "./components/SourceBreakdown";
 import { RequestLogTable } from "./components/RequestLogTable";
+dotenv.config();
 
 // Lazy-load heavy chart components — they pull in recharts which is large
 const LatencyChart = lazy(() =>
@@ -40,6 +41,10 @@ export default function TelemetryPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isPending, startTransition] = useTransition();
 
+  const API_URL = process.env.CLIENT_ENV === "production"
+        ? "https://llm-aware-gateway.onrender.com"
+        : "http://localhost:3000";
+
   // Defer filter/search values so typing doesn't block rendering
   const deferredFilter = useDeferredValue(filter);
   const deferredSearch = useDeferredValue(searchQuery);
@@ -50,8 +55,8 @@ export default function TelemetryPage() {
     startTransition(async () => {
       try {
         const [statsRes, logsRes] = await Promise.all([
-          fetch("http://localhost:3000/api/telemetry/stats"),
-          fetch("http://localhost:3000/api/telemetry"),
+          fetch(`${API_URL}/api/telemetry/stats`),
+          fetch(`${API_URL}/api/telemetry`),
         ]);
         if (!statsRes.ok || !logsRes.ok) throw new Error("Failed to fetch telemetry data");
         setStats(await statsRes.json());

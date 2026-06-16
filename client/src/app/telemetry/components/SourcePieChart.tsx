@@ -19,14 +19,14 @@ interface SourcePieChartProps {
 
 export function SourcePieChart({ data }: SourcePieChartProps) {
   return (
-    <div className="rounded-2xl border border-zinc-800/60 bg-gradient-to-b from-zinc-900/50 to-zinc-950/80 p-5">
+    <div className="rounded-2xl border border-zinc-800/60 bg-linear-to-b from-zinc-900/50 to-zinc-950/80 p-5">
       <div className="flex items-center gap-2 mb-4">
         <Database size={15} className="text-emerald-400" />
         <h3 className="text-[11px] font-bold tracking-widest uppercase text-zinc-200">
           Source Distribution
         </h3>
       </div>
-      <div className="h-[250px]">
+      <div className="h-62.5">
         {data.length > 0 ? (
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>

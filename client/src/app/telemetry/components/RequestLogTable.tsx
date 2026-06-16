@@ -28,7 +28,7 @@ export function RequestLogTable({
   }, [filter, searchQuery]);
 
   return (
-    <div className="rounded-2xl border border-zinc-800/60 bg-gradient-to-b from-zinc-900/50 to-zinc-950/80 p-5">
+    <div className="rounded-2xl border border-zinc-800/60 bg-linear-to-b from-zinc-900/50 to-zinc-950/80 p-5">
       <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
         <div className="flex items-center gap-2">
           <Clock size={15} className="text-zinc-400" />

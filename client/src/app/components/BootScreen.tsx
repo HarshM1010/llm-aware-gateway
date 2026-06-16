@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Hexagon, Cpu, Loader2 } from "lucide-react";
+import dotenv from "dotenv";
+dotenv.config();
 
 const BOOT_MESSAGES = [
-  "Initializing Memoria Gateway...",
+  "Initializing LLM Aware Gateway...",
   "Waking up edge compute container...",
   "Connecting to PostgreSQL & pgvector...",
   "Establishing Redis L1 Cache link...",
@@ -24,7 +26,9 @@ export function BootScreen({ onBootComplete }: BootScreenProps) {
     }, 3000);
 
     const pollServer = async () => {
-      const API_URL = "http://localhost:3000";
+      const API_URL = process.env.CLIENT_ENV === "production"
+        ? "https://llm-aware-gateway.onrender.com"
+        : "http://localhost:3000";
       let isAwake = false;
       let attempts = 0;
       const maxAttempts = 20;
@@ -69,12 +73,12 @@ export function BootScreen({ onBootComplete }: BootScreenProps) {
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ repeat: Infinity, duration: 60, ease: "linear" }}
-          className="absolute rounded-full border border-cyan-500/20 w-[600px] h-[600px]"
+          className="absolute rounded-full border border-cyan-500/20 w-150 h-150"
         />
         <motion.div
           animate={{ rotate: -360 }}
           transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
-          className="absolute rounded-full border border-cyan-500/30 w-[450px] h-[450px]"
+          className="absolute rounded-full border border-cyan-500/30 w-112.5 h-112.5"
         />
       </div>
 
@@ -135,7 +139,7 @@ export function BootScreen({ onBootComplete }: BootScreenProps) {
         >
           <Loader2 size={18} className="animate-spin text-cyan-400" />
           <h1 className="text-xl font-bold tracking-[0.2em] text-zinc-100">
-            SYSTEM INITIALIZATION
+            GATEWAY INITIALIZATION
           </h1>
         </motion.div>
 
@@ -152,7 +156,7 @@ export function BootScreen({ onBootComplete }: BootScreenProps) {
 
         <div className="w-full h-1 bg-zinc-900 rounded-full mt-2 mb-6 overflow-hidden relative">
           <motion.div
-            className="absolute top-0 left-0 h-full bg-gradient-to-r from-cyan-600 to-cyan-400"
+            className="absolute top-0 left-0 h-full bg-linear-to-r from-cyan-600 to-cyan-400"
             initial={{ width: "0%" }}
             animate={{ width: "100%" }}
             transition={{ duration: 45, ease: "linear" }}

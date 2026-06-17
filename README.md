@@ -1,4 +1,4 @@
-﻿# 🧠 LLM AWARE API
+﻿# 🧠 LLM AWARE GATEWAY
 
 > A semantic-aware LLM gateway with Redis exact-match caching, PostgreSQL/pgvector semantic cache, streaming fallback, and dashboard telemetry.
 

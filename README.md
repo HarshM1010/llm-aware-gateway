@@ -11,6 +11,7 @@ This repository has two primary applications:
 ## 🚀 What the project does
 
 * Receives prompt submissions from the client at `POST /api/generate`.
+* An Redis-backed Sliding Window Rate Limiter ensures there is no spamming.
 * Applies a Redis-backed exact-match cache first.
 * If the prompt misses, generates embeddings and performs semantic similarity search in PostgreSQL/pgvector.
 * Streams generated tokens back to the browser via Server-Sent Events (SSE).
@@ -106,6 +107,7 @@ The client expects the gateway to be available at `http://localhost:3000` and ru
 * Semantic cache is stored in PostgreSQL in the `semantic_cache` table with `prompt`, `embedding`, `response`, and `expires_at`.
 * `pgvector` is initialized with an HNSW index for cosine similarity search.
 * The semantic cache middleware promotes semantic hits back into Redis for faster repeated access.
+* There is Sliding Window TTL implementation to prevent both Redis and pg vector from flooding with queries and vector embeddings.
 
 ---
 

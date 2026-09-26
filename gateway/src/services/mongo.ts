@@ -12,7 +12,7 @@ export const connectMongo = async () => {
   mongoose.set("bufferCommands", false);
   try {
     await mongoose.connect(mongoUri, {
-      serverSelectionTimeoutMS: 3000,
+      serverSelectionTimeoutMS: 15000,
     });
     console.log("Connected to MongoDB (Telemetry Data Lake)");
   } catch (error) {

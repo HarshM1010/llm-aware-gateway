@@ -25,14 +25,14 @@ const LLM_MODELS = [
   },
   {
     id: "cloud_llama_70b",
-    label: "Llama 3.3 70B",
+    label: "GPT OSS 120B",
     sub: "Groq Cloud — Versatile",
     icon: Cloud,
   },
   {
     id: "cloud_llama_8b",
-    label: "Llama 3.1 8B",
-    sub: "Groq Cloud — Instant",
+    label: "GPT OSS 20B",
+    sub: "Groq Cloud — Fast",
     icon: Cloud,
   },
   {

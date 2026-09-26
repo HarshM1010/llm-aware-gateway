@@ -8,16 +8,16 @@ const pool = new Pool({
     ssl: { rejectUnauthorized: false },
     max: 10,
     idleTimeoutMillis: 30000,
-    connectionTimeoutMillis: 5000,
+    connectionTimeoutMillis: 20000,
 });
 
 // HNSW (Hierarchical Navigable Small World) and IVFFlat (Inverted File Index) are the two main indexing methods for vector search in pgvector. HNSW is faster for high-dimensional data, 
 // while IVFFlat can be more efficient for larger datasets. For our use case with 384-dimensional embeddings and a moderate 
 // dataset size, IVFFlat with 100 lists provides a good balance of speed and accuracy.
 // ✅ HNSW instead of IVFFlat because:
-    //    - IVFFlat needs existing data to build cluster centroids — FAILS on empty table
-    //    - HNSW builds the graph incrementally as rows are inserted
-    //    - HNSW has better query-time recall for cache-sized datasets (<500k rows)
+//    - IVFFlat needs existing data to build cluster centroids — FAILS on empty table
+//    - HNSW builds the graph incrementally as rows are inserted
+//    - HNSW has better query-time recall for cache-sized datasets (<500k rows)
 export const initDB = async () => {
     let client;
     try {
@@ -34,7 +34,7 @@ export const initDB = async () => {
                 expires_at TIMESTAMP DEFAULT (CURRENT_TIMESTAMP + INTERVAL '24 hours')
             );
         `);
-        
+
         await client.query(`
             CREATE INDEX IF NOT EXISTS semantic_cache_embedding_idx 
             ON semantic_cache USING hnsw (embedding vector_cosine_ops)
@@ -52,13 +52,13 @@ export const initDB = async () => {
 };
 
 export const pruneExpiredCache = async () => {
-  const result = await pool.query(
-    `DELETE FROM semantic_cache WHERE expires_at < NOW() RETURNING id;`
-  );
-  const deletedRows = result.rowCount ?? 0;
-  if (deletedRows > 0) {
-    console.log(`🧹 Pruned ${deletedRows} expired cache entries`);
-  }
+    const result = await pool.query(
+        `DELETE FROM semantic_cache WHERE expires_at < NOW() RETURNING id;`
+    );
+    const deletedRows = result.rowCount ?? 0;
+    if (deletedRows > 0) {
+        console.log(`🧹 Pruned ${deletedRows} expired cache entries`);
+    }
 };
 
 export default pool;

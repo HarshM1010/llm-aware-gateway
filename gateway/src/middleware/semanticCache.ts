@@ -11,7 +11,7 @@ export const checkSemanticCache = async (
 ): Promise<void> => {
   const { prompt } = req.body;
   const PROMOTED_QUERY_CACHE_TTL_SECONDS = 1 * 60 * 60; // 1 hour in seconds
-  
+
   try {
     // console.log("L1 Miss. Checking L2 Semantic Cache...");
     const startTime = Date.now();
@@ -44,10 +44,10 @@ export const checkSemanticCache = async (
 
         // Reset TTL on hit — entry stays alive as long as it keeps being used
         await pool.query(
-            `UPDATE semantic_cache
+          `UPDATE semantic_cache
              SET expires_at = NOW() + INTERVAL '24 hours'
              WHERE id = $1;`,
-            [match.id]
+          [match.id]
         );
 
         if (req.body.cacheKey) {

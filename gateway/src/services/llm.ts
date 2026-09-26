@@ -12,8 +12,8 @@ dotenv.config();
 type ChatModel = ChatOpenAI | ChatGroq | ChatOllama;
 
 const GROQ_MODELS = {
-    cloud_llama_70b: 'llama-3.3-70b-versatile',
-    cloud_llama_8b: 'llama-3.1-8b-instant',
+    cloud_llama_70b: 'openai/gpt-oss-120b',
+    cloud_llama_8b: 'openai/gpt-oss-20b',
 } as const;
 
 const HF_CODER_MODEL = 'Qwen/Qwen2.5-Coder-7B-Instruct';

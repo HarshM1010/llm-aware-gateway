@@ -10,7 +10,7 @@ dotenv.config();
 
 export type ModelTarget = 'hf_coder' | 'cloud_llama_70b' | 'cloud_llama_8b' | 'local_llama3';
 
-const ROUTER_MODEL = 'llama-3.1-8b-instant';
+const ROUTER_MODEL = 'openai/gpt-oss-20b';
 const MODEL_TARGETS: ModelTarget[] = ['hf_coder', 'cloud_llama_70b', 'cloud_llama_8b', 'local_llama3'];
 const CLOUD_MODEL_TARGETS: ModelTarget[] = ['hf_coder', 'cloud_llama_70b', 'cloud_llama_8b'];
 

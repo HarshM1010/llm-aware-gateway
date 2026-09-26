@@ -1,4 +1,4 @@
-﻿# 🧠 LLM AWARE GATEWAY
+# 🧠 LLM AWARE GATEWAY
 
 > A semantic-aware LLM gateway with Redis exact-match caching, PostgreSQL/pgvector semantic cache, streaming fallback, and dashboard telemetry.
 
@@ -95,8 +95,8 @@ The client expects the gateway to be available at `http://localhost:3000` and ru
 * In production, `local_llama3` is excluded and only cloud targets are used.
 * `gateway/src/services/llm.ts` supports:
   * `hf_coder` — Hugging Face `Qwen/Qwen2.5-Coder-7B-Instruct`
-  * `cloud_llama_70b` — Groq `llama-3.3-70b-versatile`
-  * `cloud_llama_8b` — Groq `llama-3.1-8b-instant`
+  * `cloud_llama_70b` — Groq `openai/gpt-oss-120b`
+  * `cloud_llama_8b` — Groq `openai/gpt-oss-20b`
   * `local_llama3` — Ollama `llama3.2`
 
 ---
